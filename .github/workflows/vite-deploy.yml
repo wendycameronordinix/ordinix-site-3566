@@ -27,10 +27,10 @@ jobs:
           node-version: '22'
           
       - name: Install dependencies (web only)
-        run: cd /packages/web && npm install
+        run: cd ./packages/web && npm install
 
       - name: Build web package
-        run: cd main/packages/web && npm run build
+        run: cd packages/web && npm run build
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
