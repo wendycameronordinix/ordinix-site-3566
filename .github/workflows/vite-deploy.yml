@@ -28,7 +28,7 @@ jobs:
         run: bun install
 
       - name: Build web package
-        run: cd main/packages/web && bun run build
+        run: cd packages/web && bun run build
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
