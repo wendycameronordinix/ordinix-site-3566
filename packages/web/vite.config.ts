@@ -10,6 +10,7 @@ import ports from "../../__ports.cjs";
 const root = path.resolve(__dirname, "../..");
 
 export default defineConfig(({ mode }) => {
+  base: '/ordinix-site-3566/',  // GitHub Pages subpath
   const env = loadEnv(mode, root, "");
   Object.assign(process.env, env);
 
