@@ -28,12 +28,12 @@ jobs:
         run: bun install
 
       - name: Build web package
-        run: cd packages/web && bun run build
+        run: cd main/packages/web && bun run build
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './packages/web/dist'
+          path: './main/packages/web/dist'
 
   deploy:
     environment:
