@@ -30,7 +30,7 @@ jobs:
         run: npm install --prefer-offline --no-audit 2>/dev/null || true
 
       - name: Install web dependencies
-        run: cd main/packages/web && npm install --legacy-peer-deps
+        run: cd packages/web && npm install --legacy-peer-deps
 
       - name: Build web package
         run: cd packages/web && npm run build
