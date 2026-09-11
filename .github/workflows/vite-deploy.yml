@@ -24,10 +24,13 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '24'
-          
-      - name: Install dependencies (web only)
-        run: cd ./packages/web && npm install
+          node-version: '22'
+
+      - name: Install root dependencies
+        run: npm install --prefer-offline --no-audit 2>/dev/null || true
+
+      - name: Install web dependencies
+        run: cd main/packages/web && npm install --legacy-peer-deps
 
       - name: Build web package
         run: cd packages/web && npm run build
