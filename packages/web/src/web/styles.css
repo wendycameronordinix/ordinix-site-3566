@@ -1,0 +1,235 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+/* ---- Self-hosted fonts (no external requests) ---- */
+@font-face {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/poppins-400.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/fonts/poppins-500.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/fonts/poppins-600.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/fonts/poppins-700.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/manrope-400.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/fonts/manrope-500.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/fonts/manrope-600.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/fonts/manrope-700.woff2") format("woff2");
+}
+
+@theme {
+  --color-navy-900: #050d1c;
+  --color-navy-850: #061225;
+  --color-navy-800: #081832;
+  --color-navy-700: #0d2246;
+  --color-navy-600: #14315f;
+  --color-cyan-brand: #01ccfe;
+  --color-cyan-soft: #5fddff;
+  --color-steel: #1a7fb5;
+  --color-ink-50: #e8f6fd;
+  --color-ink-300: #9fb3c8;
+  --color-ink-400: #7d93aa;
+
+  --font-display: "Poppins", "Segoe UI", sans-serif;
+  --font-body: "Manrope", "Segoe UI", sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-navy-900);
+    color: var(--color-ink-50);
+    font-family: var(--font-body);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+
+  ::selection {
+    background: rgba(1, 204, 254, 0.28);
+  }
+
+  * {
+    outline-color: rgba(1, 204, 254, 0.6);
+  }
+}
+
+@layer components {
+  .shell {
+    width: 100%;
+    max-width: 1200px;
+    margin-inline: auto;
+    padding-inline: 1.5rem;
+  }
+
+  .eyebrow {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 0.72rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--color-cyan-brand);
+  }
+
+  .panel {
+    background: linear-gradient(
+      160deg,
+      rgba(13, 34, 70, 0.72) 0%,
+      rgba(6, 18, 37, 0.55) 100%
+    );
+    border: 1px solid rgba(1, 204, 254, 0.16);
+    backdrop-filter: blur(6px);
+  }
+
+  .rule-glow {
+    background: linear-gradient(
+      90deg,
+      rgba(1, 204, 254, 0) 0%,
+      rgba(1, 204, 254, 0.55) 35%,
+      rgba(1, 204, 254, 0) 100%
+    );
+    height: 1px;
+  }
+
+  .node-grid {
+    background-image:
+      radial-gradient(rgba(1, 204, 254, 0.16) 1px, transparent 1px),
+      radial-gradient(rgba(26, 127, 181, 0.1) 1px, transparent 1px);
+    background-size:
+      54px 54px,
+      54px 54px;
+    background-position:
+      0 0,
+      27px 27px;
+  }
+
+  .glow-cyan {
+    box-shadow:
+      0 0 0 1px rgba(1, 204, 254, 0.25),
+      0 18px 60px -24px rgba(1, 204, 254, 0.55);
+  }
+
+  .text-gradient-brand {
+    background: linear-gradient(
+      100deg,
+      var(--color-ink-50) 0%,
+      var(--color-cyan-soft) 48%,
+      var(--color-cyan-brand) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+}
+
+/* ---- One orchestrated page-load reveal ---- */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.enter {
+  animation: fade-up 0.85s cubic-bezier(0.22, 0.68, 0.3, 1) both;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition:
+    opacity 0.75s cubic-bezier(0.22, 0.68, 0.3, 1),
+    transform 0.75s cubic-bezier(0.22, 0.68, 0.3, 1);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@keyframes float-slow {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-16px) rotate(3deg);
+  }
+}
+
+.float-slow {
+  animation: float-slow 14s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .enter,
+  .float-slow {
+    animation: none;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
